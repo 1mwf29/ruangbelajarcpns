@@ -6,52 +6,56 @@
   <title>Ruang Belajar CPNS</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    body { background-color: #f1f5f9; color: #334155; padding: 12px; }
+    body { background-color: #f8fafc; color: #334155; }
+    
+    /* FRAME CONTAINER (LOKAL & GITHUB PAGES) */
     .container { 
-  max-width: 420px; 
-  margin: 0 auto; 
-  background: #f1f5f9;
-  min-height: 100vh;
-  box-shadow: 0 0 20px rgba(0,0,0,0.1);
-}
-    
-    header { background: white; padding: 14px; border-radius: 12px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-    
-    /* HEADER TOP (LOGO KIRI, LONCENG KANAN) */
-    .header-top {
+      max-width: 420px; 
+      margin: 0 auto; 
+      background: #ffffff; 
+      min-height: 100vh; 
+      box-shadow: 0 0 20px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      padding-bottom: 70px; /* Space untuk Bottom Nav */
+    }
+
+    /* HEADER TOP */
+    .app-header {
+      padding: 16px 16px 12px 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 12px;
+      background: #ffffff;
     }
     .header-brand {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
     .brand-logo {
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       background: #1e293b;
       color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: bold;
+      font-weight: 800;
       font-size: 11px;
-      border: 1px solid #cbd5e1;
     }
     .brand-title {
       font-size: 15px;
       font-weight: 700;
-      color: #1e293b;
-      line-height: 1.1;
+      color: #0f172a;
+      line-height: 1.2;
     }
     .brand-sub {
-      font-size: 10px;
+      font-size: 11px;
       color: #64748b;
-      margin-top: 2px;
+      margin-top: 1px;
     }
     .btn-bell {
       width: 36px;
@@ -62,35 +66,35 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
+      font-size: 15px;
       cursor: pointer;
     }
 
-    /* BANNER PROFILE GRADIENT */
+    /* BANNER PROFILE HERO */
     .profile-banner {
-      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #1e40af 100%);
-      border-radius: 12px;
-      padding: 14px;
+      margin: 0 16px 16px 16px;
+      background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+      border-radius: 16px;
+      padding: 16px;
       color: white;
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+      gap: 14px;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
     }
     .profile-avatar {
-      width: 50px;
-      height: 50px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
       border: 2px solid rgba(255, 255, 255, 0.8);
       object-fit: cover;
-      flex-shrink: 0;
       background: #ffffff;
+      flex-shrink: 0;
     }
     .profile-badge {
       background: rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(4px);
-      padding: 2px 8px;
+      padding: 3px 10px;
       border-radius: 12px;
       font-size: 9px;
       font-weight: 700;
@@ -100,53 +104,59 @@
       margin-bottom: 4px;
     }
     .profile-name {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 700;
       line-height: 1.2;
     }
     .profile-desc {
-      font-size: 10px;
-      opacity: 0.85;
+      font-size: 11px;
+      opacity: 0.9;
       margin-top: 2px;
     }
 
-    .nav { display: flex; gap: 6px; background: #f8fafc; padding: 4px; border-radius: 8px; border: 1px solid #e2e8f0; }
-    .nav-btn { flex: 1; padding: 8px 4px; border: none; background: transparent; color: #64748b; font-weight: 600; font-size: 11px; border-radius: 6px; cursor: pointer; }
-    .nav-btn.active { background: white; color: #2563eb; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+    /* MAIN CONTENT AREA */
+    .content-area {
+      padding: 0 16px;
+      flex: 1;
+    }
+    .section-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 2px;
+    }
+    .section-sub {
+      font-size: 11px;
+      color: #64748b;
+      margin-bottom: 14px;
+    }
 
-    .card { background: white; padding: 16px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
     .hidden { display: none !important; }
 
-    /* Paket Simulasi List */
-    .paket-card { border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; margin-bottom: 10px; background: #f8fafc; display: flex; justify-content: space-between; align-items: center; }
+    /* PAKET CARD STYLE */
+    .paket-card { 
+      border: 1px solid #f1f5f9; 
+      border-radius: 12px; 
+      padding: 14px; 
+      margin-bottom: 10px; 
+      background: #f8fafc; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+    }
     .paket-info h4 { font-size: 13px; color: #1e293b; margin-bottom: 2px; }
     .paket-info p { font-size: 11px; color: #64748b; }
 
-    /* CAT Section */
-    .cat-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 14px; }
-    .badge { background: #dbeafe; color: #1e40af; padding: 3px 8px; border-radius: 20px; font-size: 10px; font-weight: 600; }
-    .timer { font-family: monospace; color: #dc2626; font-weight: bold; font-size: 15px; }
-    .question { font-size: 14px; font-weight: 600; margin-bottom: 14px; line-height: 1.4; }
-    
-    .opsi-btn { width: 100%; text-align: left; padding: 10px 12px; margin-bottom: 8px; border: 1px solid #cbd5e1; border-radius: 8px; background: white; font-size: 12px; color: #334155; cursor: pointer; }
-    .opsi-btn:hover { background: #f8fafc; }
-    .opsi-btn.selected { background: #eff6ff; border-color: #2563eb; color: #1d4ed8; font-weight: 600; }
-    
-    .nav-actions { display: flex; justify-content: space-between; gap: 8px; margin-top: 16px; padding-top: 12px; border-top: 1px solid #e2e8f0; }
-    .btn { padding: 8px 12px; border: none; border-radius: 6px; font-size: 11px; font-weight: 600; cursor: pointer; }
-    .btn-secondary { background: #f1f5f9; color: #475569; }
-    .btn-primary { background: #2563eb; color: white; }
-
-    /* E-BOOK KATALOG GRID */
+    /* E-BOOK GRID */
     .ebook-grid { 
       display: grid; 
       grid-template-columns: repeat(2, 1fr); 
-      gap: 10px; 
+      gap: 12px; 
     }
     .ebook-card { 
-      padding: 12px 10px; 
-      border: 1px solid #e2e8f0; 
-      border-radius: 10px; 
+      padding: 14px 12px; 
+      border: 1px solid #f1f5f9; 
+      border-radius: 12px; 
       background: #f8fafc; 
       cursor: pointer; 
       text-align: left; 
@@ -158,76 +168,75 @@
     .ebook-card:hover { 
       border-color: #2563eb; 
       background: #eff6ff; 
-      transform: translateY(-2px); 
     }
-    .ebook-icon { 
-      font-size: 24px; 
-      flex-shrink: 0; 
+    .ebook-icon { font-size: 22px; flex-shrink: 0; }
+    .ebook-title { font-weight: 700; font-size: 12px; color: #1e293b; }
+    .ebook-sub { font-size: 10px; color: #2563eb; font-weight: 600; margin-top: 2px; }
+
+    /* CAT QUIZ SECTION */
+    .cat-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 14px; }
+    .badge { background: #dbeafe; color: #1e40af; padding: 3px 8px; border-radius: 20px; font-size: 10px; font-weight: 600; }
+    .timer { font-family: monospace; color: #dc2626; font-weight: bold; font-size: 15px; }
+    .question { font-size: 13px; font-weight: 600; margin-bottom: 14px; line-height: 1.4; color: #1e293b; }
+    .opsi-btn { width: 100%; text-align: left; padding: 10px 12px; margin-bottom: 8px; border: 1px solid #cbd5e1; border-radius: 8px; background: white; font-size: 12px; color: #334155; cursor: pointer; }
+    .opsi-btn.selected { background: #eff6ff; border-color: #2563eb; color: #1d4ed8; font-weight: 600; }
+    .nav-actions { display: flex; justify-content: space-between; gap: 8px; margin-top: 16px; padding-top: 12px; border-top: 1px solid #e2e8f0; }
+
+    .btn { padding: 8px 14px; border: none; border-radius: 8px; font-size: 11px; font-weight: 600; cursor: pointer; }
+    .btn-secondary { background: #f1f5f9; color: #475569; }
+    .btn-primary { background: #2563eb; color: white; }
+
+    /* BOTTOM NAVIGATION ALA KAIN TENUN */
+    .bottom-nav {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: #ffffff;
+      border-top: 1px solid #f1f5f9;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 100;
     }
-    .ebook-title { 
-      font-weight: 700; 
-      font-size: 12px; 
-      color: #1e293b; 
-      white-space: nowrap; 
-      overflow: hidden; 
-      text-overflow: ellipsis; 
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      color: #94a3b8;
+      font-size: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      background: none;
+      width: 25%;
     }
-    .ebook-sub { 
-      font-size: 10px; 
-      color: #2563eb; 
-      font-weight: 600; 
-      margin-top: 2px; 
-    }
+    .nav-item .icon { font-size: 18px; }
+    .nav-item.active { color: #2563eb; }
 
     /* MODAL FULLSCREEN BACA BUKU */
     .modal-fullscreen {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
       background: white;
       z-index: 9999;
       display: flex;
       flex-direction: column;
     }
     .modal-header {
-      background: #1e293b;
-      color: white;
+      background: #1e293b; color: white;
       padding: 12px 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      display: flex; justify-content: space-between; align-items: center;
     }
-    .modal-title {
-      font-size: 13px;
-      font-weight: 600;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 70%;
-    }
-    .btn-close {
-      background: #ef4444;
-      color: white;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-size: 11px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .modal-body {
-      flex: 1;
-      width: 100%;
-      height: 100%;
-      background: #f1f5f9;
-    }
-
-    /* Table */
+    .modal-title { font-size: 13px; font-weight: 600; max-width: 70%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .btn-close { background: #ef4444; color: white; border: none; padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: bold; cursor: pointer; }
+    
+    /* TABLE */
     table { width: 100%; border-collapse: collapse; font-size: 11px; margin-top: 8px; }
-    th, td { padding: 8px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+    th, td { padding: 8px; text-align: left; border-bottom: 1px solid #f1f5f9; }
     th { background: #f8fafc; color: #64748b; font-size: 10px; }
     .status-pass { background: #d1fae5; color: #065f46; padding: 2px 6px; border-radius: 10px; font-weight: 600; font-size: 9px; }
   </style>
@@ -235,167 +244,194 @@
 <body>
 
   <div class="container">
-    <header>
-      <!-- HEADER TOP: LOGO KIRI & LONCENG KANAN -->
-      <div class="header-top">
-        <div class="header-brand">
-          <div class="brand-logo">CAT</div>
-          <div>
-            <div class="brand-title">Ruang Belajar CPNS</div>
-            <div class="brand-sub">Media Persiapan & CAT Digital</div>
-          </div>
-        </div>
-        <button class="btn-bell" onclick="alert('Belum ada notifikasi baru')">🔔</button>
-      </div>
-
-      <!-- BANNER PROFILE -->
-      <div class="profile-banner">
-        <img src="https://via.placeholder.com/150" class="profile-avatar" alt="Foto Profil">
+    <!-- HEADER TOP -->
+    <div class="app-header">
+      <div class="header-brand">
+        <div class="brand-logo">CAT</div>
         <div>
-          <span class="profile-badge">EDUCATOR & CREATOR</span>
-          <div class="profile-name">I Made Wibi Fernanda, S.Pd.</div>
-          <div class="profile-desc">Guru Pendidikan Pancasila — SMPN 17 Denpasar</div>
+          <div class="brand-title">Ruang Belajar CPNS</div>
+          <div class="brand-sub">Media Persiapan & CAT Digital</div>
         </div>
       </div>
+      <button class="btn-bell" onclick="alert('Belum ada notifikasi baru')">🔔</button>
+    </div>
 
-      <!-- NAVIGASI MENU -->
-      <div class="nav">
-        <button id="btn-cat" onclick="bukaMenu('cat')" class="nav-btn active">Simulasi CAT</button>
-        <button id="btn-ebook" onclick="bukaMenu('ebook')" class="nav-btn">E-Book Materi</button>
-        <button id="btn-riwayat" onclick="bukaMenu('riwayat')" class="nav-btn">Riwayat & Nilai</button>
+    <!-- BANNER PROFILE HERO -->
+    <div class="profile-banner">
+      <img src="https://via.placeholder.com/150" class="profile-avatar" alt="Foto Profil">
+      <div>
+        <span class="profile-badge">EDUCATOR & CREATOR</span>
+        <div class="profile-name">I Made Wibi Fernanda, S.Pd.</div>
+        <div class="profile-desc">Guru Pendidikan Pancasila — SMPN 17 Denpasar</div>
       </div>
-    </header>
+    </div>
 
-    <!-- MENU 1: SIMULASI CAT -->
-    <section id="menu-cat" class="card">
-      <div id="paket-box">
-        <h3 style="font-size: 14px; margin-bottom: 2px;">Pilih Paket Latihan</h3>
-        <p style="font-size: 11px; color: #64748b; margin-bottom: 12px;">Pilih simulasi di bawah untuk mulai mengerjakan soal:</p>
-
-        <div class="paket-card">
-          <div class="paket-info">
-            <h4>Simulasi 1: Paket Latihan TWK & TKP</h4>
-            <p>2 Soal • Waktu 10 Menit</p>
-          </div>
-          <button onclick="mulaiSimulasi(0)" class="btn btn-primary">Mulai</button>
-        </div>
-
-        <div class="paket-card">
-          <div class="paket-info">
-            <h4>Simulasi 2: Paket Pendalaman TIU</h4>
-            <p>2 Soal • Waktu 10 Menit</p>
-          </div>
-          <button onclick="mulaiSimulasi(1)" class="btn btn-primary">Mulai</button>
-        </div>
-      </div>
-
-      <div id="quiz-box" class="hidden">
-        <div class="cat-header">
-          <div>
-            <span id="kategori-badge" class="badge">TWK</span>
-            <div id="no-soal" style="font-size: 11px; font-weight: bold; margin-top: 2px;">Soal No. 1</div>
-          </div>
-          <div style="text-align: right;">
-            <div style="font-size: 9px; color: #94a3b8;">Sisa Waktu</div>
-            <div id="timer" class="timer">10:00</div>
-          </div>
-        </div>
-
-        <div id="pertanyaan" class="question">Memuat soal...</div>
-        <div id="opsi-container"></div>
-
-        <div class="nav-actions">
-          <button id="btn-prev" onclick="soalSebelumnya()" class="btn btn-secondary">&larr; Sebelum</button>
-          <button id="btn-next" onclick="soalBerikutnya()" class="btn btn-primary">Berikut &rarr;</button>
-        </div>
-      </div>
-
-      <div id="result-box" class="hidden" style="text-align: center; padding: 16px 0;">
-        <h2 style="color: #2563eb; font-size: 18px; margin-bottom: 6px;">Simulasi Selesai!</h2>
-        <p style="font-size: 12px; color: #64748b; margin-bottom: 12px;">Total Skor Kamu:</p>
-        <div id="total-skor" style="font-size: 32px; font-weight: bold; color: #16a34a; margin-bottom: 16px;">0</div>
-        <button onclick="kembaliKePaket()" class="btn btn-primary">Kembali ke Paket</button>
-      </div>
-    </section>
-
-    <!-- MENU 2: E-BOOK MATERI -->
-    <section id="menu-ebook" class="card hidden">
-      <h3 style="font-size: 14px; margin-bottom: 2px;">Perpustakaan Modul</h3>
-      <p style="font-size: 10px; color: #64748b; margin-bottom: 12px;">Pilih salah satu modul di bawah untuk membaca layar penuh:</p>
+    <!-- MAIN CONTENT AREA -->
+    <div class="content-area">
       
-      <div class="ebook-grid">
-        <div onclick="bukaPdfFullscreen('1dkp8kLotqg85XbWNsrTr09N2auL9PPX6', 'Buku 1: All-New Tes CPNS')" class="ebook-card">
-          <span class="ebook-icon">📘</span>
-          <div style="overflow: hidden;">
-            <div class="ebook-title">Buku 1</div>
-            <div class="ebook-sub">📖 Baca Layar Penuh</div>
+      <!-- MENU 1: BERANDA / SIMULASI CAT -->
+      <section id="menu-cat">
+        <div id="paket-box">
+          <div class="section-title">⚡ Simulasi CAT CPNS</div>
+          <div class="section-sub">Pilih paket soal latihan di bawah ini:</div>
+
+          <div class="paket-card">
+            <div class="paket-info">
+              <h4>Simulasi 1: TWK & TKP</h4>
+              <p>2 Soal • Waktu 10 Menit</p>
+            </div>
+            <button onclick="mulaiSimulasi(0)" class="btn btn-primary">Mulai</button>
+          </div>
+
+          <div class="paket-card">
+            <div class="paket-info">
+              <h4>Simulasi 2: Pendalaman TIU</h4>
+              <p>2 Soal • Waktu 10 Menit</p>
+            </div>
+            <button onclick="mulaiSimulasi(1)" class="btn btn-primary">Mulai</button>
           </div>
         </div>
 
-        <div onclick="bukaPdfFullscreen('1RJPGpGTuO-p1P_dqYRxzhhTARBG7BHEO', 'Buku 2: Modul CPNS 02')" class="ebook-card">
-          <span class="ebook-icon">📗</span>
-          <div style="overflow: hidden;">
-            <div class="ebook-title">Buku 2</div>
-            <div class="ebook-sub">📖 Baca Layar Penuh</div>
+        <!-- QUIZ BOX -->
+        <div id="quiz-box" class="hidden">
+          <div class="cat-header">
+            <div>
+              <span id="kategori-badge" class="badge">TWK</span>
+              <div id="no-soal" style="font-size: 11px; font-weight: bold; margin-top: 2px;">Soal No. 1</div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 9px; color: #94a3b8;">Sisa Waktu</div>
+              <div id="timer" class="timer">10:00</div>
+            </div>
+          </div>
+
+          <div id="pertanyaan" class="question">Memuat soal...</div>
+          <div id="opsi-container"></div>
+
+          <div class="nav-actions">
+            <button id="btn-prev" onclick="soalSebelumnya()" class="btn btn-secondary">&larr; Sebelum</button>
+            <button id="btn-next" onclick="soalBerikutnya()" class="btn btn-primary">Berikut &rarr;</button>
           </div>
         </div>
 
-        <div onclick="bukaPdfFullscreen('16xcKN17yk0Xmp5dWtD-w3cFCX-8nqM2v', 'Buku 3: Panduan Resmi CPNS CAT')" class="ebook-card">
-          <span class="ebook-icon">📙</span>
-          <div style="overflow: hidden;">
-            <div class="ebook-title">Buku 3</div>
-            <div class="ebook-sub">📖 Baca Layar Penuh</div>
+        <!-- RESULT BOX -->
+        <div id="result-box" class="hidden" style="text-align: center; padding: 20px 0;">
+          <h2 style="color: #2563eb; font-size: 18px; margin-bottom: 6px;">Simulasi Selesai!</h2>
+          <p style="font-size: 12px; color: #64748b; margin-bottom: 12px;">Total Skor Kamu:</p>
+          <div id="total-skor" style="font-size: 32px; font-weight: bold; color: #16a34a; margin-bottom: 16px;">0</div>
+          <button onclick="kembaliKePaket()" class="btn btn-primary">Kembali ke Paket</button>
+        </div>
+      </section>
+
+      <!-- MENU 2: E-BOOK MATERI -->
+      <section id="menu-ebook" class="hidden">
+        <div class="section-title">📚 Perpustakaan E-Book</div>
+        <div class="section-sub">Klik modul di bawah untuk membaca layar penuh:</div>
+        
+        <div class="ebook-grid">
+          <div onclick="bukaPdfFullscreen('1dkp8kLotqg85XbWNsrTr09N2auL9PPX6', 'Buku 1: All-New Tes CPNS')" class="ebook-card">
+            <span class="ebook-icon">1️⃣</span>
+            <div style="overflow: hidden;">
+              <div class="ebook-title">Buku 1</div>
+              <div class="ebook-sub">📖 Baca PDF</div>
+            </div>
+          </div>
+
+          <div onclick="bukaPdfFullscreen('1RJPGpGTuO-p1P_dqYRxzhhTARBG7BHEO', 'Buku 2: Modul CPNS 02')" class="ebook-card">
+            <span class="ebook-icon">2️⃣</span>
+            <div style="overflow: hidden;">
+              <div class="ebook-title">Buku 2</div>
+              <div class="ebook-sub">📖 Baca PDF</div>
+            </div>
+          </div>
+
+          <div onclick="bukaPdfFullscreen('16xcKN17yk0Xmp5dWtD-w3cFCX-8nqM2v', 'Buku 3: Panduan Resmi CPNS CAT')" class="ebook-card">
+            <span class="ebook-icon">3️⃣</span>
+            <div style="overflow: hidden;">
+              <div class="ebook-title">Buku 3</div>
+              <div class="ebook-sub">📖 Baca PDF</div>
+            </div>
+          </div>
+
+          <div onclick="bukaPdfFullscreen('10Pl-Gt1kf1sLxqMkKXBU9KpL3W4wjHqQ', 'Buku 4: Modul CPNS 04')" class="ebook-card">
+            <span class="ebook-icon">4️⃣</span>
+            <div style="overflow: hidden;">
+              <div class="ebook-title">Buku 4</div>
+              <div class="ebook-sub">📖 Baca PDF</div>
+            </div>
+          </div>
+
+          <div onclick="bukaPdfFullscreen('1N4Qpa0LICwCDBprHCrnKqK36ULJOrfbt', 'Buku 5: Modul CPNS 05')" class="ebook-card">
+            <span class="ebook-icon">5️⃣</span>
+            <div style="overflow: hidden;">
+              <div class="ebook-title">Buku 5</div>
+              <div class="ebook-sub">📖 Baca PDF</div>
+            </div>
           </div>
         </div>
+      </section>
 
-        <div onclick="bukaPdfFullscreen('10Pl-Gt1kf1sLxqMkKXBU9KpL3W4wjHqQ', 'Buku 4: Modul CPNS 04')" class="ebook-card">
-          <span class="ebook-icon">📕</span>
-          <div style="overflow: hidden;">
-            <div class="ebook-title">Buku 4</div>
-            <div class="ebook-sub">📖 Baca Layar Penuh</div>
-          </div>
+      <!-- MENU 3: RIWAYAT & NILAI -->
+      <section id="menu-riwayat" class="hidden">
+        <div class="section-title">📊 Riwayat Latihan</div>
+        <div class="section-sub">Daftar skor simulasi yang telah diselesaikan:</div>
+        <div style="overflow-x: auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Tanggal</th>
+                <th>Paket</th>
+                <th>Skor</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="tabel-riwayat">
+              <tr>
+                <td colspan="4" style="text-align: center; color: #94a3b8;">Belum ada riwayat tes.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+      </section>
 
-        <div onclick="bukaPdfFullscreen('1N4Qpa0LICwCDBprHCrnKqK36ULJOrfbt', 'Buku 5: Modul CPNS 05')" class="ebook-card">
-          <span class="ebook-icon">📓</span>
-          <div style="overflow: hidden;">
-            <div class="ebook-title">Buku 5</div>
-            <div class="ebook-sub">📖 Baca Layar Penuh</div>
-          </div>
-        </div>
-      </div>
-    </section>
+      <!-- MENU 4: SARAN & KRITIK -->
+      <section id="menu-saran" class="hidden">
+        <div class="section-title">💬 Saran & Masukan</div>
+        <div class="section-sub">Kirimkan masukan untuk pengembangan aplikasi:</div>
+        <textarea placeholder="Tuliskan saran kamu di sini..." style="width: 100%; height: 100px; padding: 10px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 12px; margin-bottom: 10px;"></textarea>
+        <button onclick="alert('Terima kasih atas saran kamu!')" class="btn btn-primary" style="width: 100%;">Kirim Saran</button>
+      </section>
 
-    <!-- MENU 3: RIWAYAT & NILAI -->
-    <section id="menu-riwayat" class="card hidden">
-      <h3 style="font-size: 14px; margin-bottom: 8px;">Riwayat Latihan</h3>
-      <div style="overflow-x: auto;">
-        <table>
-          <thead>
-            <tr>
-              <th>Tanggal</th>
-              <th>Paket</th>
-              <th>Skor</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody id="tabel-riwayat">
-            <tr>
-              <td colspan="4" style="text-align: center; color: #94a3b8;">Belum ada riwayat tes.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+    </div>
+
+    <!-- BOTTOM NAVIGATION BAR (MIRIP KAIN TENUN) -->
+    <div class="bottom-nav">
+      <button id="nav-cat" class="nav-item active" onclick="bukaTab('cat')">
+        <span class="icon">🏠</span>
+        <span>Beranda</span>
+      </button>
+      <button id="nav-ebook" class="nav-item" onclick="bukaTab('ebook')">
+        <span class="icon">📖</span>
+        <span>E-Book</span>
+      </button>
+      <button id="nav-riwayat" class="nav-item" onclick="bukaTab('riwayat')">
+        <span class="icon">📊</span>
+        <span>Riwayat</span>
+      </button>
+      <button id="nav-saran" class="nav-item" onclick="bukaTab('saran')">
+        <span class="icon">💬</span>
+        <span>Saran</span>
+      </button>
+    </div>
   </div>
 
-  <!-- MODAL BACA BUKU FULLSCREEN -->
+  <!-- MODAL FULLSCREEN BACA BUKU -->
   <div id="modal-reader" class="modal-fullscreen hidden">
     <div class="modal-header">
       <span id="modal-judul" class="modal-title">Judul Buku</span>
       <button onclick="tutupPdfFullscreen()" class="btn-close">✖ Tutup</button>
     </div>
-    <div class="modal-body">
+    <div style="flex:1;">
       <iframe id="modal-iframe" src="" style="width: 100%; height: 100%; border: none;"></iframe>
     </div>
   </div>
@@ -440,15 +476,14 @@
     let sisaWaktu = 0;
     let timerInterval;
 
-    function bukaMenu(namaMenu) {
-      document.getElementById('menu-cat').classList.add('hidden');
-      document.getElementById('menu-ebook').classList.add('hidden');
-      document.getElementById('menu-riwayat').classList.add('hidden');
+    function bukaTab(namaTab) {
+      ['cat', 'ebook', 'riwayat', 'saran'].forEach(tab => {
+        document.getElementById(`menu-${tab}`).classList.add('hidden');
+        document.getElementById(`nav-${tab}`).classList.remove('active');
+      });
 
-      ['cat', 'ebook', 'riwayat'].forEach(m => document.getElementById(`btn-${m}`).classList.remove('active'));
-
-      document.getElementById(`menu-${namaMenu}`).classList.remove('hidden');
-      document.getElementById(`btn-${namaMenu}`).classList.add('active');
+      document.getElementById(`menu-${namaTab}`).classList.remove('hidden');
+      document.getElementById(`nav-${namaTab}`).classList.add('active');
     }
 
     function mulaiSimulasi(indexPaket) {
@@ -550,7 +585,6 @@
       }, 1000);
     }
 
-    // FUNGSI BUKA & TUTUP FULLSCREEN PDF
     function bukaPdfFullscreen(idDrive, judul) {
       document.getElementById('modal-judul').innerText = judul;
       document.getElementById('modal-iframe').src = `https://drive.google.com/file/d/${idDrive}/preview`;
